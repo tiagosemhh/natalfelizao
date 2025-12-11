@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natal Feliz - Ebook 200 Dinâmicas (Última Oferta)</title>
+    <!-- Carregamento do Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregamento da Fonte Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- CONFIGURAÇÃO DO TAILWIND E ESTILOS CUSTOMIZADOS (EMBUTIDOS) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#004d40', /* Verde Escuro da marca */
+                        'primary-red': '#e53935', /* Vermelho de Oferta */
+                        'text-light': '#f9f7f4', /* Off-white para textos */
+                        'accent-gold': '#ffcc00', /* Ouro para destaques */
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Define a fonte globalmente */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0; /* Fundo leve para contraste */
+        }
+
+        /* Estilo do Botão CTA para o Efeito "Pop" e Sombreamento Forte */
+        .cta-button {
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico para o pop */
+            transform: scale(1);
+            position: relative;
+            box-shadow: 0 6px 20px rgba(229, 57, 53, 0.5); /* Sombra vermelha */
+            border: 3px solid #ffcc00; /* Borda Dourada */
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(229, 57, 53, 0.7);
+            filter: brightness(1.1);
+        }
+        
+        /* Estilo para a Prova Social (Posição Fixa Inferior Esquerda) */
+        #social-proof-alert {
+            bottom: 20px;
+            left: 20px;
+            /* Transição para suavidade */
+            transition: transform 0.6s ease-out, opacity 0.5s ease-in-out;
+            /* Inicia escondido */
+            transform: translateY(150%); 
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Sombra de texto para o título da Hero */
+        .text-shadow-custom {
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body class="text-primary-dark">
+
+    <!-- 0. Alerta Customizado (Feedback de Ação, Substitui alert()) -->
+    <div id="custom-alert" class="fixed top-4 right-4 p-4 rounded-lg shadow-xl z-[60] transition-all duration-300 transform translate-x-full">
+        <p id="custom-alert-text" class="font-semibold"></p>
+    </div>
+
+    <!-- 0. NOTIFICAÇÃO DE PROVA SOCIAL (Elemento Flutuante) -->
+    <div id="social-proof-alert" 
+         class="fixed p-3 bg-white rounded-xl shadow-2xl z-50 border-l-4 border-primary-red"
+         style="width: 280px;"
+    >
+        <div class="flex items-center gap-3">
+            <!-- Ícone -->
+            <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-primary-red/20">
+                <span class="lucide lucide-gift h-5 w-5 text-primary-red"></span>
+            </div>
+            
+            <!-- Conteúdo da Venda -->
+            <div class="flex-grow">
+                <p id="social-proof-title" class="text-sm font-bold text-primary-dark leading-tight"></p>
+                <p id="social-proof-content" class="text-xs text-gray-700 leading-snug"></p>
+            </div>
+            
+            <!-- Tempo -->
+            <div class="flex-shrink-0 text-xs text-gray-500 font-medium" id="social-proof-time"></div>
+        </div>
+    </div>
+
+    <!-- 1. Barra de Urgência (Timer Fixo no Topo) -->
+    <div class="bg-primary-red text-text-light text-center py-2 font-extrabold tracking-wider shadow-xl sticky top-0 z-40">
+        <div class="container mx-auto px-4 flex justify-center items-center gap-2 text-sm sm:text-base">
+            <span class="lucide lucide-zap h-4 w-4"></span>
+            <p class="uppercase">
+                <span class="hidden sm:inline">ÚNICA CHANCE:</span> OFERTA ENCERRA EM
+                <span id="countdown-timer" class="ml-2 bg-text-light text-primary-red px-2 py-0.5 rounded font-bold">30:00</span>
+            </p>
+            <span class="lucide lucide-zap h-4 w-4"></span>
+        </div>
+    </div>
+
+    <!-- 2. Cabeçalho (Header) -->
+    <header class="bg-white shadow-md z-30">
+        <div class="container mx-auto px-4 py-4 flex justify-start items-center">
+            <h1 class="text-3xl font-black text-primary-dark">Natal Feliz</h1>
+        </div>
+    </header>
+
+    <!-- 3. Seção Principal (Hero) - Proposta de Valor -->
+    <main class="bg-primary-dark text-text-light">
+        <section class="container mx-auto px-4 py-16 md:py-24">
+            
+            <!-- Layout ajustado para 1 coluna (sem o mockup) -->
+            <div class="flex flex-col items-center gap-12 text-center">
+
+                <div class="max-w-3xl"> 
+                    
+                    <!-- Headline Principal -->
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-accent-gold text-shadow-custom">
+                        <span class="block text-primary-red">PARE DE IMPROVISAR:</span>
+                    </h2>
+                    <p class="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 lg:mb-8 leading-none">
+                        <span class="text-primary-red">200</span> Dinâmicas
+                    </p>
+                    
+                    <p class="text-xl mb-8 font-light max-w-xl mx-auto">
+                        O acervo mais <span class="text-primary-red">completo</span> para garantir que a **alegria e a conexão** sejam o centro do seu Natal. Perfeito para empresas, igrejas e família.
+                    </p>
+                    
+                    <!-- CTA Principal -->
+                    <a href="#planos" class="block w-full sm:w-auto max-w-sm mx-auto">
+                        <button class="cta-button w-full px-12 py-4 bg-primary-red text-text-light text-2xl font-black rounded-xl uppercase hover:bg-red-700">
+                            QUERO A ÚLTIMA OFERTA
+                        </button>
+                    </a>
+                    
+                    <div class="flex items-center gap-2 mt-4 text-sm font-semibold opacity-90 justify-center">
+                        <span class="lucide lucide-shield h-4 w-4"></span> Garantia Total de 7 Dias!
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 4. Seção de Benefícios/Características (Por que escolher?) -->
+    <section id="beneficios" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-primary-dark border-b-4 border-accent-gold inline-block pb-1">
+            Por que escolher o Ebook Natal Feliz?
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            
+            <!-- Card 1: Para Todos -->
+            <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 text-center border border-gray-100">
+                <span class="lucide lucide-users-2 h-10 w-10 mx-auto mb-4 text-primary-red"></span>
+                <h3 class="text-xl font-bold mb-2 text-primary-dark">Para Todos</h3>
+                <p class="text-gray-600">Dinâmicas adaptáveis a qualquer público: Famílias, Amigos, Empresas, Igrejas ou Escolas.</p>
+            </div>
+
+            <!-- Card 2: 200 Dinâmicas -->
+            <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 text-center border border-gray-100">
+                <span class="lucide lucide-book-open-check h-10 w-10 mx-auto mb-4 text-primary-red"></span>
+                <h3 class="text-xl font-bold mb-2 text-primary-dark">Acervo Completo (200)</h3>
+                <p class="text-gray-600">Nunca fique sem ideias! Dividido por categorias: Quebra-Gelo, Reflexão, Diversão e Mais.</p>
+            </div>
+
+            <!-- Card 3: 100% Inclusivo -->
+            <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 text-center border border-gray-100">
+                <span class="lucide lucide-accessibility h-10 w-10 mx-auto mb-4 text-primary-red"></span>
+                <h3 class="text-xl font-bold mb-2 text-primary-dark">100% Inclusivo</h3>
+                <p class="text-gray-600">Com o BÔNUS Guia de Inclusão, todas as pessoas, incluindo PCDs, participam.</p>
+            </div>
+        </div>
+        
+        <!-- CTA Secundário -->
+        <div class="text-center mt-12">
+            <a href="#planos" class="inline-block">
+                <button class="px-8 py-3 bg-primary-dark text-text-light text-xl font-semibold rounded-lg hover:bg-primary-dark/90 transition duration-300 shadow-md">
+                    VER OS PLANOS COM BÔNUS EXCLUSIVOS
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <!-- 5. Seção de Depoimentos (Opiniões dos Clientes - Prova Social) -->
+    <section id="depoimentos" class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-primary-dark">
+                <span class="text-primary-red">Clientes Reais,</span> Resultados Felizes!
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Depoimento 1 -->
+                <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-accent-gold flex flex-col">
+                    <div class="mb-4 flex justify-between items-center">
+                        <div class="text-accent-gold" data-stars="5">
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-500">5 estrelas</span>
+                    </div>
+                    <p class="italic text-lg text-gray-700 flex-grow mb-4">
+                        "O Pacote Completo <span class="font-bold text-primary-red">salvou a festa</span> da nossa empresa! As dinâmicas são fáceis de aplicar e geraram muitas risadas. Recomendo 100%!"
+                    </p>
+                    <div class="font-bold text-primary-dark">
+                        Amanda R. - <span class="font-normal text-sm text-gray-600">São Paulo (SP)</span>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 (Mais Vendido) -->
+                <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-primary-red flex flex-col">
+                    <div class="mb-4 flex justify-between items-center">
+                        <div class="text-accent-gold" data-stars="5">
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-500">Melhor Compra!</span>
+                    </div>
+                    <p class="italic text-lg text-gray-700 flex-grow mb-4">
+                        "Usamos as dinâmicas para a confraternização da igreja. A variedade é incrível e o bônus de inclusão foi <span class="font-bold text-primary-red">essencial</span>. Valeu cada centavo!"
+                    </p>
+                    <div class="font-bold text-primary-dark">
+                        Pr. Jonas M. - <span class="font-normal text-sm text-gray-600">Belo Horizonte (MG)</span>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-accent-gold flex flex-col">
+                    <div class="mb-4 flex justify-between items-center">
+                        <div class="text-accent-gold" data-stars="5">
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                            <span class="lucide lucide-star fill-accent-gold h-5 w-5 inline-block"></span>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-500">Entrega Imediata</span>
+                    </div>
+                    <p class="italic text-lg text-gray-700 flex-grow mb-4">
+                        "Compramos para a família e foi um <span class="font-bold text-primary-red">sucesso</span>. Crianças e adultos participaram. Finalmente um Natal sem tédio! A entrega foi imediata."
+                    </p>
+                    <div class="font-bold text-primary-dark">
+                        Família Silva - <span class="font-normal text-sm text-gray-600">Curitiba (PR)</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- 6. Seção de Planos/Preços (OFERTA) -->
+    <section id="planos" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-primary-dark">Escolha a sua Felicidade Natalina</h2>
+
+        <div class="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            
+            <!-- Plano Básico -->
+            <div class="p-8 bg-white rounded-2xl border-2 border-gray-300 shadow-xl flex flex-col justify-between hover:shadow-2xl transition duration-300">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-700">Plano Essencial</h3>
+                    <p class="text-4xl font-extrabold text-primary-dark mb-6">R$ 10,00</p>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-lg"><span class="lucide lucide-check h-6 w-6 text-green-600 mr-3"></span> 50 Dinâmicas Essenciais</li>
+                        <li class="flex items-center text-lg"><span class="lucide lucide-check h-6 w-6 text-green-600 mr-3"></span> Formato PDF</li>
+                        <li class="flex items-center text-lg text-gray-500"><span class="lucide lucide-x h-6 w-6 text-gray-400 mr-3"></span> Sem Bônus Exclusivos</li>
+                    </ul>
+                </div>
+                
+                <!-- Botão de Ação: Chama purchaseNow('basic') que abre a Modal de Oferta Secreta. -->
+                <button onclick="purchaseNow('basic')" class="cta-button w-full px-8 py-3 bg-gray-600 text-white text-lg font-semibold rounded-xl hover:bg-gray-700 border-gray-600 shadow-none hover:shadow-lg">
+                    SELECIONAR ESSENCIAL
+                </button>
+            </div>
+
+            <!-- Plano Completo (MAIS VENDIDO) - Destaque -->
+            <div class="relative p-8 bg-primary-dark rounded-2xl shadow-2xl scale-[1.03] border-4 border-accent-gold flex flex-col justify-between">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-accent-gold text-primary-dark text-sm font-black px-5 py-1.5 rounded-full shadow-lg border-2 border-primary-dark">
+                    ESCOLHA DOS CAMPEÕES
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-2 text-text-light mt-2">Pacote Completo</h3>
+                    <div class="flex items-end mb-6">
+                        <p class="text-xl line-through opacity-70 mr-3 text-text-light">R$ 47,00</p>
+                        <p class="text-5xl font-black text-primary-red">R$ 27,00</p>
+                    </div>
+                    <p class="text-sm text-primary-red font-extrabold mb-6">OFERTA VÁLIDA SOMENTE COM O TIMER!</p>
+
+                    <h4 class="text-xl font-extrabold mb-4 text-accent-gold border-t pt-4 border-text-light/20">INCLUI:</h4>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-lg text-text-light"><span class="lucide lucide-package-check h-6 w-6 text-accent-gold mr-3"></span> **200 Dinâmicas** (Acervo COMPLETO)</li>
+                        <li class="flex items-center text-lg text-text-light"><span class="lucide lucide-gift h-6 w-6 text-accent-gold mr-3"></span> <span class="text-primary-red">BÔNUS 1</span>: Guia de Inclusão (PCDs)</li>
+                        <li class="flex items-center text-lg text-text-light"><span class="lucide lucide-gift h-6 w-6 text-accent-gold mr-3"></span> <span class="text-primary-red">BÔNUS 2</span>: 50 Receitas Natalinas Rápidas</li>
+                        <li class="flex items-center text-lg text-text-light"><span class="lucide lucide-check-circle h-6 w-6 text-accent-gold mr-3"></span> Acesso Vitalício e Imediato</li>
+                    </ul>
+                </div>
+                
+                <!-- Botão de Ação: Chama purchaseNow('complete') que inicia o FLUXO DIRETO (R$ 27,00) -->
+                <button onclick="purchaseNow('complete')" class="cta-button w-full px-8 py-4 bg-primary-red text-text-light text-2xl font-black rounded-xl hover:bg-red-700">
+                    QUERO O PACOTE COMPLETO
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer (Atualizado) -->
+    <footer class="bg-primary-dark py-8 mt-12">
+        <div class="container mx-auto px-4 text-center text-text-light">
+            <p class="text-sm opacity-70">
+                &copy; 2025 Natal Feliz. Todos os direitos reservados. | CNPJ: 00.000.000/0001-00
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal de Oferta Secreta (Upsell R$ 10 -> R$ 17) -->
+    <div id="secret-offer-modal" class="fixed inset-0 bg-black bg-opacity-80 z-[70] flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-sm w-full transform transition-all duration-300 scale-100">
+            <!-- Header da Modal - Vermelho com Ícone de Presente -->
+            <div class="bg-primary-red p-6 text-text-light text-center relative">
+                <span class="lucide lucide-gift h-8 w-8 mx-auto mb-2 animate-pulse"></span>
+                <h3 class="text-2xl font-extrabold">ESPERE! OFERTA SECRETA PARA VOCÊ!</h3>
+                <p class="text-base opacity-90 font-light">Não feche essa janela. Não perca essa chance, ela não voltará.</p>
+                
+                <!-- Botão de Fechar (declina a oferta) -->
+                <button onclick="declineSecretOffer()" class="absolute top-2 right-3 text-text-light hover:text-accent-gold transition">
+                    <span class="lucide lucide-x h-6 w-6"></span>
+                </button>
+            </div>
+            
+            <!-- Corpo da Modal -->
+            <div class="p-6 text-center">
+                <p class="text-gray-700 text-lg mb-4 font-semibold">Atualize seu pedido: Leve o Pacote Completo (200 dinâmicas + <span class="text-primary-red">Todos os Bônus</span>) por:</p>
+                <div class="mb-4">
+                    <span class="text-xl line-through text-gray-400 mr-2">R$ 47,00</span>
+                    <span class="text-primary-red text-6xl font-black">R$ 17</span>
+                </div>
+                <p class="text-sm font-semibold text-primary-red flex items-center justify-center gap-1 mb-6">
+                    <span class="lucide lucide-clock h-4 w-4"></span> ECONOMIZE R$ 30,00!
+                </p>
+
+                <!-- Botão de Aceite: Ativa FLUXO 1 (R$ 17,00) -->
+                <button onclick="acceptSecretOffer()" class="cta-button w-full px-8 py-4 bg-green-600 text-text-light text-xl font-bold rounded-xl shadow-lg hover:bg-green-700 mb-4 border-green-600">
+                    SIM! QUERO O PACOTE POR R$ 17
+                </button>
+
+                <!-- Link de Declínio: Ativa FLUXO 2 (R$ 10,00) -->
+                <button onclick="declineSecretOffer()" class="text-gray-500 text-sm font-medium hover:text-primary-dark transition block w-full mt-2">
+                    Não, quero apenas o <span class="text-primary-red">plano básico de R$ 10</span>.
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- LÓGICA JAVASCRIPT (EMBUTIDA E FUNCIONAL) -->
+    <script>
+        // Inicializa os ícones Lucide no carregamento
+        lucide.createIcons();
+        
+        // --- Variáveis Globais ---
+        let countdownEndTime; 
+        let countdownInterval; 
+        
+        // =========================================================================
+        // ATENÇÃO: COLOQUE SEUS LINKS DE PAGAMENTO AQUI PARA ATIVAR O CHECKOUT
+        // =========================================================================
+        const PAYMENT_LINK_COMPLETE_27 = "https://seu-checkout.com/completo-27"; // R$ 27,00 (Pacote Completo - Direto)
+        const PAYMENT_LINK_ESSENCIAL_10 = "https://seu-checkout.com/essencial-10"; // R$ 10,00 (Plano Essencial - Após declínio da oferta secreta)
+        const PAYMENT_LINK_UPSELL_17 = "https://seu-checkout.com/upsell-17"; // R$ 17,00 (Oferta Secreta / Upgrade)
+        // =========================================================================
+
+        // Dados para simulação da prova social
+        const socialProofData = [
+            { name: "Camila B.", city: "Belém (PA)", plan: "Essencial" },
+            { name: "Pedro A.", city: "Porto Alegre (RS)", plan: "Completo" },
+            { name: "Maria L.", city: "Curitiba (PR)", plan: "Completo" },
+            { name: "João V.", city: "São Paulo (SP)", plan: "Essencial" },
+            { name: "Ana P.", city: "Salvador (BA)", plan: "Completo" },
+            { name: "Lucas F.", city: "Belo Horizonte (MG)", plan: "Essencial" },
+            { name: "Sofia C.", city: "Rio de Janeiro (RJ)", plan: "Completo" },
+            { name: "Gabriela S.", city: "Fortaleza (CE)", plan: "Completo" },
+            { name: "Rafael M.", city: "Manaus (AM)", plan: "Essencial" },
+            { name: "Juliana T.", city: "Florianópolis (SC)", plan: "Completo" },
+        ];
+
+        // --- Funções de Utilidade (Alertas Customizados) ---
+
+        /**
+         * Exibe um alerta customizado no canto superior direito (Substitui alert()).
+         */
+        function showCustomAlert(message, type) {
+            const alertEl = document.getElementById('custom-alert');
+            const textEl = document.getElementById('custom-alert-text');
+            
+            alertEl.className = 'fixed top-4 right-4 p-4 rounded-lg shadow-xl z-[60] transition-all duration-300 transform translate-x-full';
+            
+            let bgColor, textColor;
+
+            switch (type) {
+                case 'success':
+                    bgColor = 'bg-green-600';
+                    textColor = 'text-white';
+                    break;
+                case 'error':
+                    bgColor = 'bg-red-600';
+                    textColor = 'text-white';
+                    break;
+                case 'info':
+                default:
+                    bgColor = 'bg-blue-600';
+                    textColor = 'text-white';
+                    break;
+            }
+
+            alertEl.classList.add(bgColor, textColor);
+            textEl.textContent = message;
+
+            // Slide in
+            requestAnimationFrame(() => {
+                alertEl.classList.remove('translate-x-full');
+            });
+
+            // Slide out after 5 seconds
+            setTimeout(() => {
+                alertEl.classList.add('translate-x-full');
+            }, 5000);
+        }
+
+        // --- Funções de Lógica do Funil (Modais e Redirecionamento) ---
+
+        /**
+         * Inicia o processo de compra e redireciona ou abre o modal de upsell.
+         */
+        function purchaseNow(plan) {
+            const modal = document.getElementById('secret-offer-modal');
+            
+            if (plan === 'basic') {
+                // Abre a modal de upsell (R$ 10,00 -> R$ 17,00)
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; 
+                showCustomAlert("Plano Básico selecionado. Aguarde a oferta de upgrade...", 'info');
+            } else if (plan === 'complete') {
+                // Redirecionamento Direto para o Plano Completo R$ 27,00
+                showCustomAlert("🛒 Checkout iniciado! Redirecionando para o Pacote Completo (R$ 27,00).", 'success');
+                window.location.href = PAYMENT_LINK_COMPLETE_27;
+            }
+        }
+
+        /**
+         * Aceita a oferta secreta (R$ 17,00) e redireciona. (FLUXO 1)
+         */
+        function acceptSecretOffer() {
+            const modal = document.getElementById('secret-offer-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            showCustomAlert("🚀 Oferta Aceita! Redirecionando para o Checkout (R$ 17,00).", 'success');
+            window.location.href = PAYMENT_LINK_UPSELL_17;
+        }
+
+        /**
+         * Declina a oferta secreta e redireciona para o plano original (R$ 10,00). (FLUXO 2)
+         */
+        function declineSecretOffer() {
+            const modal = document.getElementById('secret-offer-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            showCustomAlert("✅ Compra Finalizada. Redirecionando para o Essencial (R$ 10,00).", 'info');
+            window.location.href = PAYMENT_LINK_ESSENCIAL_10;
+        }
+
+
+        // --- Lógica do Cronômetro (Urgência) ---
+
+        /**
+         * Atualiza o cronômetro de contagem regressiva.
+         */
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownEndTime - now;
+            const timerEl = document.getElementById('countdown-timer');
+
+            if (distance < 0) {
+                timerEl.textContent = "00:00"; 
+                if (countdownInterval) { 
+                    clearInterval(countdownInterval);
+                }
+                return;
+            }
+
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Exibe no formato MM:SS
+            timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // --- Lógica da Prova Social ---
+
+        /**
+         * Exibe um alerta de prova social no canto inferior esquerdo.
+         */
+        function showSocialProofAlert() {
+            const alertEl = document.getElementById('social-proof-alert');
+            const titleEl = document.getElementById('social-proof-title');
+            const contentEl = document.getElementById('social-proof-content');
+            const timeEl = document.getElementById('social-proof-time');
+
+            // Seleciona dado aleatório
+            const randomData = socialProofData[Math.floor(Math.random() * socialProofData.length)];
+            // Tempo aleatório entre 1 e 30 minutos atrás
+            const randomTimeMinutes = Math.floor(Math.random() * 29) + 1; 
+            
+            // Atualiza o conteúdo
+            titleEl.textContent = `${randomData.name}`; 
+            contentEl.textContent = `Comprou o Plano ${randomData.plan} em ${randomData.city}`;
+            timeEl.textContent = `${randomTimeMinutes}m atrás`;
+
+            // Exibe o alerta (slide in - remove translateY(150%))
+            alertEl.style.transform = 'translateY(0)';
+            alertEl.style.opacity = '1';
+
+            // Oculta após 6 segundos 
+            setTimeout(() => {
+                // Slide out (move para baixo - adiciona translateY(150%))
+                alertEl.style.transform = 'translateY(150%)'; 
+                alertEl.style.opacity = '0';
+            }, 6000);
+        }
+
+        /**
+         * Inicializa a exibição periódica dos alertas de prova social.
+         */
+        function initSocialProof() {
+            function scheduleNextAlert() {
+                // Intervalo aleatório entre 25s e 50s
+                const minDelay = 25000;
+                const maxDelay = 50000;
+                const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+
+                // Agenda o próximo ciclo
+                setTimeout(() => {
+                    showSocialProofAlert();
+                    scheduleNextAlert(); 
+                }, randomDelay);
+            }
+            
+            // Inicia o primeiro alerta após 5 segundos de carregamento
+            setTimeout(showSocialProofAlert, 5000); 
+            
+            // Inicia o ciclo de agendamento recorrente
+            scheduleNextAlert(); 
+        }
+
+        // --- Inicialização (Garante que tudo inicia após o carregamento do DOM) ---
+
+        window.onload = function() {
+            try {
+                // 1. Inicializa o Cronômetro para 30 minutos
+                const initialDurationMinutes = 30; 
+                countdownEndTime = new Date().getTime() + (initialDurationMinutes * 60 * 1000);
+                
+                // 2. Inicia o intervalo de atualização do cronômetro
+                countdownInterval = setInterval(updateCountdown, 1000); 
+                updateCountdown(); // Mostra 30:00 imediatamente
+                
+                // 3. Inicia o sistema de prova social
+                initSocialProof(); 
+            } catch (error) {
+                console.error("Erro fatal durante a inicialização do script:", error);
+                // Exibe uma mensagem de erro na UI (usando o alerta customizado)
+                showCustomAlert("Erro: O sistema de urgência não pôde ser iniciado.", 'error');
+            }
+        };
+    </script>
+</body>
+</html>
